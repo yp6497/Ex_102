@@ -7,10 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 /**
- * The type Main activity.
  * @author Yulia Piavka <yp6497@bs.amalnet.k12.il>
  * @version 1.1
- * @since 13 /11/2020 short description- the credits activity.
+ * @since 1/12/2020 short description- the credits activity.
  */
 public class creditsActivity extends AppCompatActivity {
 

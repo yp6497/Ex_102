@@ -19,65 +19,75 @@ import java.util.Random;
 import static android.graphics.Color.WHITE;
 
 /**
- * The type Main activity.
- *
  * @author Yulia Piavka <yp6497@bs.amalnet.k12.il>
  * @version 1.1
- * @since 13 /11/2020 short description- 5 buttons with a little explanation. every button does something different.
+ * @since 1/12/2020 short description- 5 buttons with a little explanation. every button does something different.
  */
 public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout layout;
     AlertDialog.Builder adb;
+    final String[]colors={"red","green","blue"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        adb = new AlertDialog.Builder(this);
+        //adb = new AlertDialog.Builder(this);
         layout = findViewById(R.id.layout);
     }
 
     /**
-     * description- Displays message only.
+     * description-
      * @param view the view
      */
-    public void onlyMes(View view) {
+    public void oneColor(View view) {
 
-        //adb = new AlertDialog.Builder(this);
-        adb.setTitle("only text");
-        adb.setMessage("This is a simple alert");
-
-        AlertDialog ad = adb.create();
-        ad.show();
-    }
-
-    /**
-     * description- Displays message with icon.
-     * @param view the view
-     */
-    public void noBwI(View view) {
+        int[]color= {0,0,0};
 
         adb = new AlertDialog.Builder(this);
-        adb.setTitle("text with icon");
-        adb.setMessage("This is a simple alert with icon");
-        //adb.setIcon(R.drawable.androidlogo);
+        adb.setTitle("Choose one color");
+        adb.setItems(colors, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                color[which]=255;
+                layout.setBackgroundColor(Color.rgb(color[0],color[1],color[2]));
+            }
+        });
+
+        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
 
         AlertDialog ad = adb.create();
         ad.show();
     }
 
     /**
-     * description- Displays one button with icon.
+     * description-
      * @param view the view
      */
-    public void oneB(View view) {
+    public void multyC(View view) {
 
-        //adb = new AlertDialog.Builder(this);
-        adb.setTitle("one button");
-        adb.setMessage("This is a one button alert");
-        //adb.setIcon(R.drawable.androidlogo);
-        adb.setNegativeButton("close", new DialogInterface.OnClickListener() {
+        int[]color={0,0,0};
+        adb = new AlertDialog.Builder(this);
+        adb = new AlertDialog.Builder(this);
+        adb.setTitle("Choose any color you want");
+        adb.setMultiChoiceItems(colors, null, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                if(isChecked) color[which]=255;
+                else if(color[which]==255) color[which]=0;
+                layout.setBackgroundColor(Color.rgb(color[0],color[1],color[2]));
+            }
+        });
+
+        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -88,13 +98,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * description- Displays two buttons.
+     * description- Displays one button with icon.
+     * @param view the view
+     */
+    public void defultW(View view) {
+        layout.setBackgroundColor(WHITE);
+    }
+
+    /**
+     * description-
      * @param view the view
      */
     public void inputD(View view) {
 
-        //adb = new AlertDialog.Builder(this);
-        adb.setTitle("two buttons");
+        adb = new AlertDialog.Builder(this);
+        adb.setTitle("input");
         final EditText eT= new EditText(this);
         eT.setHint("Type your text here");
         adb.setView(eT);
@@ -112,12 +130,9 @@ public class MainActivity extends AppCompatActivity {
                 dialog.cancel();
             }
         });
-
         AlertDialog ad = adb.create();
         ad.show();
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -132,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        adb = new AlertDialog.Builder(this);
         String st = item.getTitle().toString();
 
         if (st.endsWith("Credits")) {
@@ -141,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 }
+
+
 
 
 
