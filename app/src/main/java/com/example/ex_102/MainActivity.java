@@ -21,7 +21,7 @@ import static android.graphics.Color.WHITE;
 /**
  * @author Yulia Piavka <yp6497@bs.amalnet.k12.il>
  * @version 1.1
- * @since 1/12/2020 short description- 5 buttons with a little explanation. every button does something different.
+ * @since 1/12/2020 short description- 4 buttons with a little explanation. Every button makes is own operation.
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * description-
+     * description- The color that the user choose shows up on the screen(one color choice).
      * @param view the view
      */
     public void oneColor(View view) {
@@ -71,22 +71,28 @@ public class MainActivity extends AppCompatActivity {
      * description-
      * @param view the view
      */
-    public void multyC(View view) {
+    public void multiC(View view) {
 
         int[]color={0,0,0};
         adb = new AlertDialog.Builder(this);
         adb = new AlertDialog.Builder(this);
         adb.setTitle("Choose any color you want");
-        adb.setMultiChoiceItems(colors, null, new DialogInterface.OnMultiChoiceClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                adb.setMultiChoiceItems(colors, null, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
 
-                if(isChecked) color[which]=255;
-                else if(color[which]==255) color[which]=0;
+                        if(isChecked) color[which]=255;
+                        else if(color[which]==255) color[which]=0;
+
+                    }
+        });
+        adb.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
                 layout.setBackgroundColor(Color.rgb(color[0],color[1],color[2]));
             }
-        });
 
+        });
         adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -98,21 +104,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * description- Displays one button with icon.
+     * description- Reset the screen color to white.
      * @param view the view
      */
     public void defultW(View view) {
+
         layout.setBackgroundColor(WHITE);
     }
 
     /**
-     * description-
+     * description- gets the user input and show it in toast.
      * @param view the view
      */
     public void inputD(View view) {
 
         adb = new AlertDialog.Builder(this);
-        adb.setTitle("input");
+        adb.setTitle("Enter an input");
         final EditText eT= new EditText(this);
         eT.setHint("Type your text here");
         adb.setView(eT);

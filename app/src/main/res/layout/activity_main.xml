@@ -41,7 +41,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="46dp" />
+            android:layout_height="38dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,8 +57,8 @@
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="multyC"
-                android:text="Multy choise" />
+                android:onClick="multiC"
+                android:text="Multi choise" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="defultW"
-                android:text="reset to white" />
+                android:text="Reset color to white" />
 
             <Space
                 android:layout_width="wrap_content"
