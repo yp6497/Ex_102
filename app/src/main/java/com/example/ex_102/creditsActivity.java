@@ -9,7 +9,8 @@ import android.view.MenuItem;
 /**
  * @author Yulia Piavka <yp6497@bs.amalnet.k12.il>
  * @version 1.1
- * @since 1/12/2020 short description- the credits activity.
+ * @since 1/12/2020
+ * short description- the credits.
  */
 public class creditsActivity extends AppCompatActivity {
 
@@ -33,7 +34,7 @@ public class creditsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         String st = item.getTitle().toString();
-        if (st.endsWith("Main Activity"))
+        if (st.endsWith("Main screen"))
             finish();
 
         return true;

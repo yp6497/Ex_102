@@ -21,24 +21,25 @@ import static android.graphics.Color.WHITE;
 /**
  * @author Yulia Piavka <yp6497@bs.amalnet.k12.il>
  * @version 1.1
- * @since 1/12/2020 short description- 4 buttons with a little explanation. Every button makes is own operation.
+ * @since 1/12/2020
+ * short description- 4 buttons. Every button makes is own operation.
  */
 public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout layout;
     AlertDialog.Builder adb;
     final String[]colors={"red","green","blue"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //adb = new AlertDialog.Builder(this);
         layout = findViewById(R.id.layout);
     }
 
     /**
-     * description- The color that the user choose shows up on the screen(one color choice).
+     * description- The selected color by appears on the screen (one color choice).
      * @param view the view
      */
     public void oneColor(View view) {
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
         adb = new AlertDialog.Builder(this);
         adb.setTitle("Choose one color");
+        adb.setCancelable(false);
+
         adb.setItems(colors, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -68,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * description-
+     * description- A combination of colors. Each color the user chooses blends accordingly (if "ok" selected).
      * @param view the view
      */
     public void multiC(View view) {
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         int[]color={0,0,0};
         adb = new AlertDialog.Builder(this);
         adb = new AlertDialog.Builder(this);
+        adb.setCancelable(false);
         adb.setTitle("Choose any color you want");
                 adb.setMultiChoiceItems(colors, null, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
@@ -113,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * description- gets the user input and show it in toast.
+     * description- gets the user input and show it in toast (if "Ok" selected).
      * @param view the view
      */
     public void inputD(View view) {
@@ -123,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText eT= new EditText(this);
         eT.setHint("Type your text here");
         adb.setView(eT);
+        adb.setCancelable(false);
         adb.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -164,12 +169,3 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 }
-
-
-
-
-
-
-
-
-
