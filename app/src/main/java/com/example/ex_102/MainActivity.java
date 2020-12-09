@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     public void oneColor(View view) {
 
         int[]color= {0,0,0};
-
         adb = new AlertDialog.Builder(this);
         adb.setTitle("Choose one color");
         adb.setCancelable(false);
@@ -87,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
 
                         if(isChecked) color[which]=255;
                         else if(color[which]==255) color[which]=0;
-
                     }
         });
         adb.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
